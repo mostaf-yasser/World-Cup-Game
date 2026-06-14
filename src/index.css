@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #f97316;
+  --color-secondary: #22c55e;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.dark.600') transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: theme('colors.dark.600');
+  border-radius: 9999px;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-white antialiased;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: 'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif;
+  }
+
+  [dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .gap-x-3 {
+    --tw-gap-x-reverse: 1;
+  }
+
+  /* Flip icons in RTL */
+  [dir="rtl"] .lucide-arrow-right {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .lucide-arrow-left {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .lucide-chevron-right {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .lucide-chevron-left {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .lucide-chevron-down {
+    transform: none;
+  }
+
+  [dir="rtl"] .lucide-chevron-up {
+    transform: none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-gradient-to-br from-dark-800/90 to-dark-900/95 backdrop-blur-xl rounded-2xl border border-dark-700/50 shadow-card;
+  }
+
+  /* RTL-aware border radius */
+  [dir="rtl"] .rounded-l-xl {
+    @apply rounded-r-xl rounded-l-none;
+  }
+
+  [dir="rtl"] .rounded-r-xl {
+    @apply rounded-l-xl rounded-r-none;
+  }
+
+  [dir="rtl"] .border-l {
+    @apply border-r border-l-0;
+  }
+
+  [dir="rtl"] .border-r {
+    @apply border-l border-r-0;
+  }
+
+  [dir="rtl"] .pl-12 {
+    @apply pl-4 pr-12;
+  }
+}
+
+::selection {
+  background-color: theme('colors.primary.500/30');
+  color: white;
+}
